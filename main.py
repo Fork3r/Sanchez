@@ -1,9 +1,12 @@
 #! /usr/bin/python
-from subprocess import Popen, PIPE
-import os
-cmd = os.path.join(os.getcwd()) + '/' + 'Sanchez'
-proc = Popen(cmd, shell=True, stdout=PIPE, stdin=PIPE, stderr=PIPE)
-proc.stdin.write(b"test\n")
+import speech_recognition as sr
 
-
-
+r = sr.Recognizer()
+with sr.Microphone() as source:
+    print("Speak Anything :")
+    audio = r.listen(source)
+    try:
+        text = r.recognize_google(audio)
+        print("You said : {}".format(text))
+    except:
+print("Sorry could not recognize what you said")
