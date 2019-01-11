@@ -1,8 +1,12 @@
 #include <QCoreApplication>
+#include <QTextStream>
+#include <QFile>
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
-
-    return a.exec();
+    while (1) {
+     QTextStream qtin(stdin);
+     QString test;
+        test = qtin.readLine();
+    }
 }
